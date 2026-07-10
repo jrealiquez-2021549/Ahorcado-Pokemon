@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@400;500;600&display=swap');
+@import "tailwindcss";
+
+@theme {
+  /* Colores tomados del style.css original del proyecto */
+  --color-glass: #e7f0f2;
+  --color-glass-border: #8dc2ce;
+  --color-accent: #8dc2ce;
+  --color-accent-dark: #5f9aa8;
+  --color-danger: #c0392b;
+
+  --color-ink: #eef3f6;
+  --color-ink-soft: #d7e3e6;
+
+  --font-display: 'Poppins', sans-serif;
+  --font-body: 'Inter', sans-serif;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  margin: 0;
+  overflow-x: hidden;
+}
+
+.glass-panel {
+  background-color: rgba(231, 240, 242, 0.22);
+  border: 1px solid rgba(141, 194, 206, 0.45);
+  backdrop-filter: blur(2px);
+}
+
+/* Layout de juego portado del style.css original (paneles izquierda/centro/derecha) */
+.game-grid {
+  display: grid;
+  grid-template-areas:
+    'left center'
+    'left center'
+    'keyboard keyboard'
+    'word word';
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  width: 100%;
+  max-width: 950px;
+}
+
+.area-left {
+  grid-area: left;
+}
+.area-center {
+  grid-area: center;
+}
+.area-keyboard {
+  grid-area: keyboard;
+}
+.area-word {
+  grid-area: word;
+}
+
+@media screen and (max-width: 640px) {
+  .game-grid {
+    grid-template-areas:
+      'left left'
+      'center center'
+      'keyboard keyboard'
+      'word word';
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
